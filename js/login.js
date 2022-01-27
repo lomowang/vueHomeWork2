@@ -12,17 +12,17 @@ createApp({
     methods: {
         login() {
             const api = 'https://vue3-course-api.hexschool.io/v2/admin/signin';
-            const path = 'popeye';
+            const path = 'lomo1986';
             axios.post(api, this.user).then((res) => {
                 const { token, expired } = res.data;
                 console.log(res);
-                // 寫入 cookie token
+                // 將token 寫入cookie
                 // expires 設置有效時間
-                document.cookie = `hexToken=${token};expires=${new Date(expired)}; path=/`;
+                document.cookie = `hexToken=${token};expires=${new Date(expired)}`;
                 window.location = 'products.html';
             }).catch((err) => {
                 console.dir(err)
-                alert(err.data.message);
+                alert(err.data.message);   //告知帳密錯誤提示
             });
         },
 
