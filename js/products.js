@@ -15,6 +15,7 @@ createApp({
     }
   },
   methods: {
+    // 確認登入
     checkAdmin() {
       const url = `${this.apiUrl}/api/user/check`;
       axios.post(url).then((res)=>{
@@ -27,7 +28,7 @@ createApp({
     },
     //取得相關資料
     getData(){
-      const url = `${this.apiUrl}/api/${this.Path}/admin/products`
+      const url = `${this.apiUrl}/api/${this.Path}/admin/products`;
       axios.get(url).then((res)=>{
         // console.log(res.data.products);
         this.products = res.data.products;
@@ -41,6 +42,7 @@ createApp({
     }
   },
   mounted() {
+    // 取得token
     const token = document.cookie.replace(/(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/, '$1');
     axios.defaults.headers.common.Authorization = token;
     console.log(token);
