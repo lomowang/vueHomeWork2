@@ -12,7 +12,6 @@ createApp({
     methods: {
         login() {
             const api = 'https://vue3-course-api.hexschool.io/v2/admin/signin';
-            const path = 'lomo1986';
             axios.post(api, this.user).then((res) => {
                 const { token, expired } = res.data;
                 console.log(res);
