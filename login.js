@@ -1,4 +1,7 @@
-import { createApp } from 'https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.26/vue.esm-browser.min.js';
+import { createApp } from 'https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.29/vue.esm-browser.min.js';
+
+
+
 
 createApp({
     data() {
@@ -17,8 +20,9 @@ createApp({
                 console.log(res);
                 // 將token 寫入cookie
                 // expires 設置有效時間
-                document.cookie = `hexToken=${token};expires=${new Date(expired)}`;
-                window.location = 'products.html';
+                document.cookie = `hexToken=${token};expires=${new Date(expired)}; path=/`;
+                //登入要轉入的網址
+                window.location = 'pro.html';
             }).catch((err) => {
                 console.dir(err)
                 alert(err.data.message);   //告知帳密錯誤提示

@@ -45,7 +45,7 @@
                 </td>
                 <td width="150">
 <!--                                           事件監聽                  條件式渲染 v-if & v-else -->
-                  <span class="text-success" v-on:click="change(item)" v-if="item.is_enables">啟用</span>
+                  <span class="text-success" v-on:click="change(item)" v-if="item.is_enabled">啟用</span>
         
                   <span v-else v-on:click="change(item)">未啟用</span>
                 </td>
@@ -60,25 +60,25 @@
         </div>
         <div class="col-md-6">
           <h2>單一產品細節</h2>
-          <template v-if="temp.id">
+          <template v-if="tempProduct.title">
             <div class="card mb-3">
-              <img :src="temp.imageUrl" class="card-img-top primary-image" alt="主圖">
+              <img :src="tempProduct.imageUrl" class="card-img-top primary-image" alt="主圖">
               <div class="card-body">
                 <h5 class="card-title">
-                  {{ temp.tetle }}
-                  <span class="badge bg-primary ms-2">{{ temp.category }}</span>
+                  {{ tempProduct.tetle }}
+                  <span class="badge bg-primary ms-2">{{ tempProduct.category }}</span>
                 </h5>
-                <p class="card-text">商品描述：{{ temp.description}}</p>
-                <p class="card-text">商品內容：{{ temp.content }}</p>
+                <p class="card-text">商品描述：{{ tempProduct.description}}</p>
+                <p class="card-text">商品內容：{{ tempProduct.content }}</p>
                 <div class="d-flex">
-                  <p class="card-text me-2">{{ temp.price }}</p>
-                  <p class="card-text text-secondary"><del>{{ temp.origin_price }}</del></p>
-                  {{ temp.unit }} / 元
+                  <p class="card-text me-2">{{ tempProduct.price }}</p>
+                  <p class="card-text text-secondary"><del>{{ tempProduct.origin_price }}</del></p>
+                  {{ tempProduct.unit }} / 元
                 </div>
               </div>
             </div>
 <!--                                                                     v-bind簡寫 : -->
-            <dic v-for="(image,index) in temp.imagesUrl" class="d-inline" :key="index">
+            <dic v-for="(image,index) in tempProduct.imagesUrl" class="d-inline" :key="index">
               <img :src="image" :alt="temp.category" class="images m-2">
             <template>
               <img src="" alt="" class="images m-2">
@@ -90,7 +90,12 @@
     </div>
   </div>
 <!-- partial -->
-  <script type="module" src="products.js"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.9.1/axios.min.js'
+  integrity='sha512-Xk3wWei2TGrsh9kDSBKUMIjw/86sLUvhtnv9f7fOuIwhhiUTKz8szkWkzHthrM5Bb3Bu9idSzkxOrkzhcneuiw=='
+  crossorigin='anonymous'></script>
+
+  
+  <script type="module" src="./products.js"></script>
 
 </body>
 </html>
