@@ -27,7 +27,8 @@ import { createApp } from "https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.29/vue
     },
     //取得相關資料
     getData() {
-      axios.get(`${this.apiUrl}/api/${this.apiPath}/admin/products`)
+      const api_Url = `${this.apiUrl}/api/${this.apiPath}/admin/products`
+      axios.get(api_Url)
         //接收
         .then((res => {
           this.products = res.data.products;
@@ -40,7 +41,7 @@ import { createApp } from "https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.29/vue
       this.tempProduct = item;
     }
   },
-created() {
+mounted() {
   //取出token
   const token = document.cookie.replace(/(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/, '$1');
   axios.defaults.headers.common.Authorization = token;

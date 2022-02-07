@@ -32,7 +32,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="(item) in products" v-bind:key="item.id">
+              <tr v-for="item in products" :key="item.id">
 <!--                                 代出商品名稱 -->
                 <td width="150">{{ item.title }}</td>
                 <td width="120">
