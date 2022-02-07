@@ -21,7 +21,8 @@ import { createApp } from "https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.29/vue
       })
       .catch((err) => {
         alert(err.data.message)
-        window.location = `index.html`;
+        //導入產品頁面
+        window.location = `pro.html`;
       })
     },
     //取得相關資料
