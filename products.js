@@ -8,15 +8,18 @@ import { createApp } from "https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.29/vue
       apiUrl: "https://vue3-course-api.hexschool.io/v2",
       apiPath: "lomo1986",
       products: [],
-      tempProduct: [],
+      tempProduct: {},
     }
   },
   methods: {
     // 確認登入
     checkAdmin() {
+      const Token = document.cookie.replace(/(?:(?:^|.*;\s*)hextoken\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+      axios.defaults.headers.common['Authorization'] = Token;
+
       const Url = `${this.apiUrl}/api/user/check`;
       axios.post(Url)
-      .then(() => {
+      .then((res) => {
         this.getData();
       })
       .catch((err) => {
@@ -36,15 +39,18 @@ import { createApp } from "https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.29/vue
         .catch((err => {
          alert(err.data.message);
        })
+      }
     },
-    openProduct(item) {
-      this.tempProduct = item;
-    }
-  },
+  //   openProduct(item) {
+  //     this.tempProduct = item;
+  //   }
+  // },
 mounted() {
   //取出token
-  const token = document.cookie.replace(/(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/, '$1');
-  axios.defaults.headers.common.Authorization = token;
+ 
+
   this.checkAdmin()
    }
-}).mount('#app');
+})
+
+app.mount('#app');
