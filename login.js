@@ -31,4 +31,3 @@ createApp({
 
     },
 }).mount('#app');
-1122
