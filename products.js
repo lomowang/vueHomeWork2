@@ -13,14 +13,14 @@ createApp({
   },
   mounted() {
     //取出token
-    const Token = document.cookie.replace(/(?:(?:^|.*;\s*)hextoken\s*\=\s*([^;]*).*$)|^.*$/, "$1");
-    axios.defaults.headers.common['Authorization'] = Token;
+    const token = document.cookie.replace(/(?:(?:^|.*;\s*)hexToken\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+    axios.defaults.headers.common['Authorization'] = token;
     this.checkAdmin();
      },
   methods: {
     // 確認登入
     checkAdmin() {
-      axios.post(`${this.apiUrl}/api/user/check`)
+      axios.post(`${apiUrl}/api/user/check`)
       .then((res) => {
         this.getData();
       })
@@ -32,7 +32,7 @@ createApp({
     },
     //取得相關資料
     getData() {
-      axios.get(`${this.apiUrl}/api/${this.apiPath}/admin/products`)
+      axios.get(`${apiUrl}/api/${apiPath}/admin/products`)
         //接收
         .then((res) => {
           this.products = res.data.products;
