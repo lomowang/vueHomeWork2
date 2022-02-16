@@ -1,0 +1,58 @@
+{
+	"folders": [
+		{
+			"name": "金魚切版",
+			"path": "..\\切版練習\\金魚切版"
+		},
+		{
+			"name": "金魚css&html",
+			"path": "..\\切版練習\\金魚css&html"
+		},
+		{
+			"name": "JavaScript30-master",
+			"path": "..\\JavaScript30-master"
+		},
+		{
+			"name": "CSS",
+			"path": "..\\CSS"
+		},
+		{
+			"name": "2021新課程練習",
+			"path": "..\\六角學院\\2021新課程練習"
+		},
+		{
+			"name": "六角學院",
+			"path": "..\\六角學院"
+		},
+		{
+			"name": "ajax-post",
+			"path": "..\\六角學院\\ajax-post"
+		},
+		{
+			"name": "vue3-starter-files-gh-pages",
+			"path": "..\\vue3-starter-files-gh-pages"
+		},
+		{
+			"name": "VUE",
+			"path": "."
+		},
+		{
+			"name": "六角切版",
+			"path": "..\\切版練習\\六角切版"
+		},
+		{
+			"name": "boostrap",
+			"path": "..\\布魯斯\\boostrap"
+		},
+		{
+			"path": "..\\布魯斯\\課程範例"
+		},
+		{
+			"path": "..\\vue-line-animate-demo-main"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "VUE",
+		"livePreview.defaultPreviewPath": "i:\\切版練習\\金魚切版\\破格式設計11\\index.html"
+	}
+}
