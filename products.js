@@ -12,17 +12,23 @@ createApp({
   data() {
     return {
       products: [],
-      tempProduct: {}
+      tempProduct: {
+        // 多圖
+        imagesUrl: [],
+      },
+      New: false,
     }
   },
   mounted() {
     //帶入bootstrap5 傳遞選項(互動視窗)
+    //新增和編輯
     productsModal = new bootstrap.Modal(document.getElementById('productsModal'),{
-      keybord: false
+    keybord: false
     });
-    // delproductsModal = new bootstrap.Modal(document.getElementById('delproductsModal'),{
-    //   keybord: false
-    // });
+    // 刪除使用
+    delproductsModal = new bootstrap.Modal(document.getElementById('delproductsModal'),{
+    keybord: false
+    });
     
     //取出token
     const token = document.cookie.replace(/(?:(?:^|.*;\s*)hexToken\s*\=\s*([^;]*).*$)|^.*$/, "$1");
@@ -59,10 +65,55 @@ createApp({
     tempProduct(item){
       this.tempProduct = item;
     },
-    openModel(){
-      productsModal.show();
+    openModal(status, item){
+      if (status === 'New'){
+        // 清空物件
+        this.tempProduct = {  
+          imagesUrl:[],
+        };
+        this.New = true;
+        productsModal.show();
+      }else if( status === 'edit'){
+                            // 別忘記淺拷貝
+        this.tempProduct = { ...item};
+        productsModal.show();
+        this.New = false;
+      }else if (status === 'delete'){
+        delproductsModal.show();
+        this.tempProduct = { ...item};
+      }
+    },
+    updateProduct(){ 
+      // 新增
+      let url = `${apiUrl}/api/${apiPath}/admin/product`;
+      let method = 'post';
+      // 注意有 ! (反轉)
+      if (!this.New){
+        url = `${apiUrl}/api/${apiPath}/admin/product/${this.tempProduct.id}`;
+        method = 'put';
     }
-  },
+
+    axios[method](url,{data: this.tempProduct})
+    .then((res) => {
+      // 成功訊息
+      alert(res.data.message);
+      productsModal.hide();
+      this.getData();
+    }).catch((err) =>{
+      // 錯誤訊息
+      alert(err.data.message);
+    });
+    },
+    delProduct(){
+      // 刪除 
+      let url = `${apiUrl}/api/${apiPath}/admin/product/${this.tempProduct.id}`;
+      axios.delete(url)
+        .then( res=> {
+        this.getData();
+        delproductsModal.hide();
+      });
+    },
+}
 }).mount('#app');
 
 
