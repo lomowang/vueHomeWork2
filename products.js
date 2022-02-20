@@ -4,6 +4,10 @@ import { createApp } from "https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.29/vue
 const apiUrl="https://vue3-course-api.hexschool.io/v2";
 const  apiPath= "lomo1986";
 
+// 建立新增與刪除
+let productsModal = {};
+let delproductsModal = {};
+
 createApp({
   data() {
     return {
@@ -12,11 +16,22 @@ createApp({
     }
   },
   mounted() {
+    //帶入bootstrap5 傳遞選項(互動視窗)
+    productsModal = new bootstrap.Modal(document.getElementById('productsModal'),{
+      keybord: false
+    });
+    // delproductsModal = new bootstrap.Modal(document.getElementById('delproductsModal'),{
+    //   keybord: false
+    // });
+    
     //取出token
     const token = document.cookie.replace(/(?:(?:^|.*;\s*)hexToken\s*\=\s*([^;]*).*$)|^.*$/, "$1");
     axios.defaults.headers.common['Authorization'] = token;
     this.checkAdmin();
-     },
+    
+
+
+  },
   methods: {
     // 確認登入
     checkAdmin() {
@@ -41,10 +56,13 @@ createApp({
             console.log(err);
         })
       },
-      tempProduct(item){
-        this.tempProduct = item;
-      }
+    tempProduct(item){
+      this.tempProduct = item;
     },
+    openModel(){
+      productsModal.show();
+    }
+  },
 }).mount('#app');
 
 
